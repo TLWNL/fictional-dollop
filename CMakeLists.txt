@@ -4,7 +4,7 @@ project(cpp-chat-client)
 set(CMAKE_CXX_STANDARD 17)
 
 set(TARGET_NAME cpp-chat-client)
-add_executable(${TARGET_NAME} main.cpp vusocket.h Client.cpp Client.h Server.cpp Server.h Application.cpp Application.h vusocket.cpp CircularLineBuffer.cpp CircularLineBuffer.h ClientHandler.cpp ClientHandler.h)
+add_executable(${TARGET_NAME} main.cpp vusocket.h Client.cpp Client.h Server.cpp Server.h Application.cpp Application.h vusocket.cpp CircularLineBuffer.cpp CircularLineBuffer.h ClientHandler.cpp ClientHandler.h Client.cpp Server.cpp Server.h CircularLineBuffer.cpp ClientHandler.cpp ClientHandler.h)
 if(WIN32)
     target_link_libraries(${TARGET_NAME} Ws2_32)
 else()
