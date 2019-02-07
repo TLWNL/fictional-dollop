@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.4886.39/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /home/dylan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/183.4886.39/bin/cmake/linux/bin/cmake -E remove -f
+RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/dylan/School/Computer Networks/cpp-chat-client"
+CMAKE_SOURCE_DIR = /Users/eliane_kad/CLionProjects/fictional-dollop
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug"
+CMAKE_BINARY_DIR = /Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/cpp-chat-client.dir/depend.make
@@ -59,94 +59,94 @@ include CMakeFiles/cpp-chat-client.dir/flags.make
 
 CMakeFiles/cpp-chat-client.dir/main.cpp.o: CMakeFiles/cpp-chat-client.dir/flags.make
 CMakeFiles/cpp-chat-client.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cpp-chat-client.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp-chat-client.dir/main.cpp.o -c "/home/dylan/School/Computer Networks/cpp-chat-client/main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/cpp-chat-client.dir/main.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp-chat-client.dir/main.cpp.o -c /Users/eliane_kad/CLionProjects/fictional-dollop/main.cpp
 
 CMakeFiles/cpp-chat-client.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp-chat-client.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/dylan/School/Computer Networks/cpp-chat-client/main.cpp" > CMakeFiles/cpp-chat-client.dir/main.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/eliane_kad/CLionProjects/fictional-dollop/main.cpp > CMakeFiles/cpp-chat-client.dir/main.cpp.i
 
 CMakeFiles/cpp-chat-client.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp-chat-client.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/dylan/School/Computer Networks/cpp-chat-client/main.cpp" -o CMakeFiles/cpp-chat-client.dir/main.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/eliane_kad/CLionProjects/fictional-dollop/main.cpp -o CMakeFiles/cpp-chat-client.dir/main.cpp.s
 
 CMakeFiles/cpp-chat-client.dir/Client.cpp.o: CMakeFiles/cpp-chat-client.dir/flags.make
 CMakeFiles/cpp-chat-client.dir/Client.cpp.o: ../Client.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cpp-chat-client.dir/Client.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp-chat-client.dir/Client.cpp.o -c "/home/dylan/School/Computer Networks/cpp-chat-client/Client.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/cpp-chat-client.dir/Client.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp-chat-client.dir/Client.cpp.o -c /Users/eliane_kad/CLionProjects/fictional-dollop/Client.cpp
 
 CMakeFiles/cpp-chat-client.dir/Client.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp-chat-client.dir/Client.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/dylan/School/Computer Networks/cpp-chat-client/Client.cpp" > CMakeFiles/cpp-chat-client.dir/Client.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/eliane_kad/CLionProjects/fictional-dollop/Client.cpp > CMakeFiles/cpp-chat-client.dir/Client.cpp.i
 
 CMakeFiles/cpp-chat-client.dir/Client.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp-chat-client.dir/Client.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/dylan/School/Computer Networks/cpp-chat-client/Client.cpp" -o CMakeFiles/cpp-chat-client.dir/Client.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/eliane_kad/CLionProjects/fictional-dollop/Client.cpp -o CMakeFiles/cpp-chat-client.dir/Client.cpp.s
 
 CMakeFiles/cpp-chat-client.dir/Server.cpp.o: CMakeFiles/cpp-chat-client.dir/flags.make
 CMakeFiles/cpp-chat-client.dir/Server.cpp.o: ../Server.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cpp-chat-client.dir/Server.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp-chat-client.dir/Server.cpp.o -c "/home/dylan/School/Computer Networks/cpp-chat-client/Server.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/cpp-chat-client.dir/Server.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp-chat-client.dir/Server.cpp.o -c /Users/eliane_kad/CLionProjects/fictional-dollop/Server.cpp
 
 CMakeFiles/cpp-chat-client.dir/Server.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp-chat-client.dir/Server.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/dylan/School/Computer Networks/cpp-chat-client/Server.cpp" > CMakeFiles/cpp-chat-client.dir/Server.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/eliane_kad/CLionProjects/fictional-dollop/Server.cpp > CMakeFiles/cpp-chat-client.dir/Server.cpp.i
 
 CMakeFiles/cpp-chat-client.dir/Server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp-chat-client.dir/Server.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/dylan/School/Computer Networks/cpp-chat-client/Server.cpp" -o CMakeFiles/cpp-chat-client.dir/Server.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/eliane_kad/CLionProjects/fictional-dollop/Server.cpp -o CMakeFiles/cpp-chat-client.dir/Server.cpp.s
 
 CMakeFiles/cpp-chat-client.dir/Application.cpp.o: CMakeFiles/cpp-chat-client.dir/flags.make
 CMakeFiles/cpp-chat-client.dir/Application.cpp.o: ../Application.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cpp-chat-client.dir/Application.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp-chat-client.dir/Application.cpp.o -c "/home/dylan/School/Computer Networks/cpp-chat-client/Application.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/cpp-chat-client.dir/Application.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp-chat-client.dir/Application.cpp.o -c /Users/eliane_kad/CLionProjects/fictional-dollop/Application.cpp
 
 CMakeFiles/cpp-chat-client.dir/Application.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp-chat-client.dir/Application.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/dylan/School/Computer Networks/cpp-chat-client/Application.cpp" > CMakeFiles/cpp-chat-client.dir/Application.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/eliane_kad/CLionProjects/fictional-dollop/Application.cpp > CMakeFiles/cpp-chat-client.dir/Application.cpp.i
 
 CMakeFiles/cpp-chat-client.dir/Application.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp-chat-client.dir/Application.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/dylan/School/Computer Networks/cpp-chat-client/Application.cpp" -o CMakeFiles/cpp-chat-client.dir/Application.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/eliane_kad/CLionProjects/fictional-dollop/Application.cpp -o CMakeFiles/cpp-chat-client.dir/Application.cpp.s
 
 CMakeFiles/cpp-chat-client.dir/vusocket.cpp.o: CMakeFiles/cpp-chat-client.dir/flags.make
 CMakeFiles/cpp-chat-client.dir/vusocket.cpp.o: ../vusocket.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cpp-chat-client.dir/vusocket.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp-chat-client.dir/vusocket.cpp.o -c "/home/dylan/School/Computer Networks/cpp-chat-client/vusocket.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/cpp-chat-client.dir/vusocket.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp-chat-client.dir/vusocket.cpp.o -c /Users/eliane_kad/CLionProjects/fictional-dollop/vusocket.cpp
 
 CMakeFiles/cpp-chat-client.dir/vusocket.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp-chat-client.dir/vusocket.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/dylan/School/Computer Networks/cpp-chat-client/vusocket.cpp" > CMakeFiles/cpp-chat-client.dir/vusocket.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/eliane_kad/CLionProjects/fictional-dollop/vusocket.cpp > CMakeFiles/cpp-chat-client.dir/vusocket.cpp.i
 
 CMakeFiles/cpp-chat-client.dir/vusocket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp-chat-client.dir/vusocket.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/dylan/School/Computer Networks/cpp-chat-client/vusocket.cpp" -o CMakeFiles/cpp-chat-client.dir/vusocket.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/eliane_kad/CLionProjects/fictional-dollop/vusocket.cpp -o CMakeFiles/cpp-chat-client.dir/vusocket.cpp.s
 
 CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.o: CMakeFiles/cpp-chat-client.dir/flags.make
 CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.o: ../CircularLineBuffer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.o -c "/home/dylan/School/Computer Networks/cpp-chat-client/CircularLineBuffer.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.o -c /Users/eliane_kad/CLionProjects/fictional-dollop/CircularLineBuffer.cpp
 
 CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/dylan/School/Computer Networks/cpp-chat-client/CircularLineBuffer.cpp" > CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/eliane_kad/CLionProjects/fictional-dollop/CircularLineBuffer.cpp > CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.i
 
 CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/dylan/School/Computer Networks/cpp-chat-client/CircularLineBuffer.cpp" -o CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/eliane_kad/CLionProjects/fictional-dollop/CircularLineBuffer.cpp -o CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.s
 
 CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.o: CMakeFiles/cpp-chat-client.dir/flags.make
 CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.o: ../ClientHandler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.o -c "/home/dylan/School/Computer Networks/cpp-chat-client/ClientHandler.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.o -c /Users/eliane_kad/CLionProjects/fictional-dollop/ClientHandler.cpp
 
 CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/dylan/School/Computer Networks/cpp-chat-client/ClientHandler.cpp" > CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/eliane_kad/CLionProjects/fictional-dollop/ClientHandler.cpp > CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.i
 
 CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/dylan/School/Computer Networks/cpp-chat-client/ClientHandler.cpp" -o CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/eliane_kad/CLionProjects/fictional-dollop/ClientHandler.cpp -o CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.s
 
 # Object files for target cpp-chat-client
 cpp__chat__client_OBJECTS = \
@@ -170,7 +170,7 @@ cpp-chat-client: CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.o
 cpp-chat-client: CMakeFiles/cpp-chat-client.dir/ClientHandler.cpp.o
 cpp-chat-client: CMakeFiles/cpp-chat-client.dir/build.make
 cpp-chat-client: CMakeFiles/cpp-chat-client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable cpp-chat-client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable cpp-chat-client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cpp-chat-client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -183,6 +183,6 @@ CMakeFiles/cpp-chat-client.dir/clean:
 .PHONY : CMakeFiles/cpp-chat-client.dir/clean
 
 CMakeFiles/cpp-chat-client.dir/depend:
-	cd "/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/dylan/School/Computer Networks/cpp-chat-client" "/home/dylan/School/Computer Networks/cpp-chat-client" "/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug" "/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug" "/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles/cpp-chat-client.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/eliane_kad/CLionProjects/fictional-dollop /Users/eliane_kad/CLionProjects/fictional-dollop /Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug /Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug /Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/CMakeFiles/cpp-chat-client.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/cpp-chat-client.dir/depend
 
