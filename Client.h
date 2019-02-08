@@ -27,26 +27,26 @@ private:
      *
      * See the lab manual for the assignment description.
      */
-    void tick() override;
+    void tick() override{};
 
     /**
      * Assignment 4
      *
      * See the lab manual for the assignment description.
      */
-    int readFromStdin();
+    int readFromStdin(){};
 
     /**
      * Assignment 4
      *
      * See the lab manual for the assignment description.
      */
-    int readFromSocket();
+    int readFromSocket(){};
 
     inline void threadReadFromStdin() {
         while (!isStopped()) {
             auto res = readFromStdin();
-            if (res <= 0) {
+            if (res < 0) {
                 stopApplication();
             }
         }
@@ -55,15 +55,15 @@ private:
     inline void threadReadFromSocket() {
         while (!isStopped()) {
             auto res = readFromSocket();
-            if (res <= 0) {
+            if (res < 0) {
                 stopApplication();
             }
         }
     }
 
-    void createSocketAndLogIn();
+    void createSocketAndLogIn(){};
 
-    void closeSocket();
+    void closeSocket(){};
 
     inline void startThreads() {
         socketThread = std::thread(&Client::threadReadFromSocket, this);
