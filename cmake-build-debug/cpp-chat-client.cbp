@@ -8,122 +8,118 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug"/>
+				<Option working_dir="/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug"/>
+				<Option working_dir="/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="cpp-chat-client">
-				<Option output="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/cpp-chat-client" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/6"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/6"/>
-					<Add directory="/usr/include/c++/6/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 cpp-chat-client"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="cpp-chat-client/fast">
-				<Option output="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/cpp-chat-client" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/usr/include/c++/6"/>
-					<Add directory="/usr/include/x86_64-linux-gnu/c++/6"/>
-					<Add directory="/usr/include/c++/6/backward"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 cpp-chat-client/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug"/>
+				<Option working_dir="/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/dylan/School/Computer\ Networks/cpp-chat-client/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cpp-chat-client">
+				<Option output="/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/cpp-chat-client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 cpp-chat-client"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cpp-chat-client/fast">
+				<Option output="/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/cpp-chat-client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 cpp-chat-client/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/dylan/School/Computer Networks/cpp-chat-client/Application.cpp">
+		<Unit filename="/Users/eliane_kad/CLionProjects/fictional-dollop/Application.cpp">
 			<Option target="cpp-chat-client"/>
 		</Unit>
-		<Unit filename="/home/dylan/School/Computer Networks/cpp-chat-client/Application.h">
+		<Unit filename="/Users/eliane_kad/CLionProjects/fictional-dollop/Application.h">
 			<Option target="cpp-chat-client"/>
 		</Unit>
-		<Unit filename="/home/dylan/School/Computer Networks/cpp-chat-client/CircularLineBuffer.cpp">
+		<Unit filename="/Users/eliane_kad/CLionProjects/fictional-dollop/CircularLineBuffer.cpp">
 			<Option target="cpp-chat-client"/>
 		</Unit>
-		<Unit filename="/home/dylan/School/Computer Networks/cpp-chat-client/CircularLineBuffer.h">
+		<Unit filename="/Users/eliane_kad/CLionProjects/fictional-dollop/CircularLineBuffer.h">
 			<Option target="cpp-chat-client"/>
 		</Unit>
-		<Unit filename="/home/dylan/School/Computer Networks/cpp-chat-client/Client.cpp">
+		<Unit filename="/Users/eliane_kad/CLionProjects/fictional-dollop/Client.cpp">
 			<Option target="cpp-chat-client"/>
 		</Unit>
-		<Unit filename="/home/dylan/School/Computer Networks/cpp-chat-client/Client.h">
+		<Unit filename="/Users/eliane_kad/CLionProjects/fictional-dollop/Client.h">
 			<Option target="cpp-chat-client"/>
 		</Unit>
-		<Unit filename="/home/dylan/School/Computer Networks/cpp-chat-client/ClientHandler.cpp">
+		<Unit filename="/Users/eliane_kad/CLionProjects/fictional-dollop/ClientHandler.cpp">
 			<Option target="cpp-chat-client"/>
 		</Unit>
-		<Unit filename="/home/dylan/School/Computer Networks/cpp-chat-client/ClientHandler.h">
+		<Unit filename="/Users/eliane_kad/CLionProjects/fictional-dollop/ClientHandler.h">
 			<Option target="cpp-chat-client"/>
 		</Unit>
-		<Unit filename="/home/dylan/School/Computer Networks/cpp-chat-client/Server.cpp">
+		<Unit filename="/Users/eliane_kad/CLionProjects/fictional-dollop/Server.cpp">
 			<Option target="cpp-chat-client"/>
 		</Unit>
-		<Unit filename="/home/dylan/School/Computer Networks/cpp-chat-client/Server.h">
+		<Unit filename="/Users/eliane_kad/CLionProjects/fictional-dollop/Server.h">
 			<Option target="cpp-chat-client"/>
 		</Unit>
-		<Unit filename="/home/dylan/School/Computer Networks/cpp-chat-client/main.cpp">
+		<Unit filename="/Users/eliane_kad/CLionProjects/fictional-dollop/main.cpp">
 			<Option target="cpp-chat-client"/>
 		</Unit>
-		<Unit filename="/home/dylan/School/Computer Networks/cpp-chat-client/vusocket.cpp">
+		<Unit filename="/Users/eliane_kad/CLionProjects/fictional-dollop/vusocket.cpp">
 			<Option target="cpp-chat-client"/>
 		</Unit>
-		<Unit filename="/home/dylan/School/Computer Networks/cpp-chat-client/vusocket.h">
+		<Unit filename="/Users/eliane_kad/CLionProjects/fictional-dollop/vusocket.h">
 			<Option target="cpp-chat-client"/>
 		</Unit>
-		<Unit filename="/home/dylan/School/Computer Networks/cpp-chat-client/CMakeLists.txt">
+		<Unit filename="/Users/eliane_kad/CLionProjects/fictional-dollop/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

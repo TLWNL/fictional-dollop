@@ -1,3 +1,3 @@
-/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles/cpp-chat-client.dir
-/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/eliane_kad/CLionProjects/fictional-dollop/cmake-build-debug/CMakeFiles/cpp-chat-client.dir
