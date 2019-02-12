@@ -64,8 +64,6 @@ private:
     }
 
     void createSocketAndLogIn(){
-        // Use the getaddrinfo to translate address to machine-readable (use hints param)
-        //The chat-server IP: 52.58.97.202 5378
         struct addrinfo hints;
         struct addrinfo *res;
         const char *ip = "52.58.97.202";
@@ -77,7 +75,6 @@ private:
         hints.ai_flags = 0;
 
 
-
         int myInfo = getaddrinfo(ip, port, &hints, &res);
         if (myInfo != 0) {
             fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(myInfo));
@@ -85,16 +82,18 @@ private:
         }
 
         int handle = socket(AF_INET, SOCK_STREAM, 0);
-        if(handle != 0) {
+        if(handle < 0) {
             fprintf(stderr, "connect: %s\n", gai_strerror(handle));
         }
 
         int connection = connect(handle, res->ai_addr, res->ai_addrlen);
 
         if(connection != 0) {
-            printf("%d", connection);
             fprintf(stderr, "connect: %s\n", gai_strerror(connection));
         }
+
+        freeaddrinfo(res);
+
 
     };
 
