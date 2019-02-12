@@ -7,6 +7,7 @@
 
 #include <thread>
 #include <string.h>
+#include <sstream>
 #include <pthread.h>
 #include "Application.h"
 #include "vusocket.h"
@@ -64,10 +65,13 @@ private:
     }
 
     void createSocketAndLogIn(){
-        struct addrinfo hints;
-        struct addrinfo *res;
+        struct addrinfo hints{}, *res;
         const char *ip = "52.58.97.202";
         const char *port = "5378";
+//        size_t bytesToReceive;
+        const void *recvBuffer;
+        std::string loginName;
+        char buf[500];
 
         hints.ai_family = AF_INET;
         hints.ai_socktype = SOCK_STREAM;
@@ -94,6 +98,31 @@ private:
 
         freeaddrinfo(res);
 
+
+        std::cout << "Please enter your log-in name: ";
+        std::cin >> loginName;
+
+        std::stringstream ss;
+        ss << "HELLO-FROM " << loginName << "\n";
+        std::string handshake = ss.str();
+
+        char const *byteShake = handshake.c_str();
+
+        ssize_t sendRes = send(handle, byteShake, handshake.size(), 0);
+
+        if(sendRes != -1){
+            std::cout << "Send successful!\n";
+        }
+
+        size_t bytesToReceive = 7 + loginName.length();
+
+        ssize_t receive = recv(handle, buf, bytesToReceive, 0);
+
+        if((int) receive == -1){
+            fprintf(stderr, "receive error: -1");
+        }
+
+        std::cout << buf;
 
     };
 
