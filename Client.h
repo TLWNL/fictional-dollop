@@ -35,7 +35,9 @@ private:
      *
      * See the lab manual for the assignment description.
      */
-    int readFromStdin(){};
+    int readFromStdin(){
+        return 0;
+    };
 
     /**
      * Assignment 4
@@ -43,7 +45,7 @@ private:
      * See the lab manual for the assignment description.
      */
     int readFromSocket(){
-
+        return 0;
     };
 
     inline void threadReadFromStdin() {
@@ -68,16 +70,13 @@ private:
         struct addrinfo hints{}, *res;
         const char *ip = "52.58.97.202";
         const char *port = "5378";
-//        size_t bytesToReceive;
         const void *recvBuffer;
         std::string loginName;
         char buf[500];
-
         hints.ai_family = AF_INET;
         hints.ai_socktype = SOCK_STREAM;
         hints.ai_protocol = IPPROTO_TCP;
         hints.ai_flags = 0;
-
 
         int myInfo = getaddrinfo(ip, port, &hints, &res);
         if (myInfo != 0) {
@@ -91,13 +90,11 @@ private:
         }
 
         int connection = connect(handle, res->ai_addr, res->ai_addrlen);
-
         if(connection != 0) {
             fprintf(stderr, "connect: %s\n", gai_strerror(connection));
         }
 
         freeaddrinfo(res);
-
 
         std::cout << "Please enter your log-in name: ";
         std::cin >> loginName;
@@ -105,28 +102,32 @@ private:
         std::stringstream ss;
         ss << "HELLO-FROM " << loginName << "\n";
         std::string handshake = ss.str();
-
         char const *byteShake = handshake.c_str();
 
         ssize_t sendRes = send(handle, byteShake, handshake.size(), 0);
-
-        if(sendRes != -1){
-            std::cout << "Send successful!\n";
+        if(sendRes == -1){
+            fprintf(stderr, "send error: -1");
         }
 
         size_t bytesToReceive = 7 + loginName.length();
-
         ssize_t receive = recv(handle, buf, bytesToReceive, 0);
-
         if((int) receive == -1){
             fprintf(stderr, "receive error: -1");
         }
 
-        std::cout << buf;
+        const char* inUse = "IN-USE\n";
+        if(strcmp(buf, inUse) == 0){
+            fprintf(stderr, "Username %s is already in use, please enter another one:", loginName.c_str());
+        }
 
+        std::cout << buf;
     };
 
-    void closeSocket(){};
+
+    void closeSocket(){
+        sock_close(sock);
+        sock_quit();
+    };
 
     inline void startThreads() {
         socketThread = std::thread(&Client::threadReadFromSocket, this);
