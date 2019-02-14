@@ -22,13 +22,71 @@ private:
     SOCKET sock;
     std::thread socketThread, stdinThread;
     CircularLineBuffer socketBuffer, stdinBuffer;
+    int handle;
 
     /**
      * Assignment 2
      *
      * See the lab manual for the assignment description.
      */
-    void tick() override{};
+    void tick() override{
+        std::string command;
+        std::cout << "Please enter your command:\n";
+        std::cin >> command;
+
+        if (strcmp(command.c_str(), "!quit") == 0) {
+            std::cout << "Stopping Application";
+            stopApplication();
+        }
+        else if (strcmp(command.c_str(),  "!who") == 0){
+            char const *who = "WHO\n";;
+            char whoBuf[1024];
+
+            ssize_t whoRes = send(handle, who, 5, 0);
+            if((int) whoRes == -1){
+                fprintf(stderr, "send Error: -1\n");
+            }
+
+            ssize_t receive = recv(handle, whoBuf, 1024, 0);
+            if((int) receive == -1){
+                fprintf(stderr, "receive error: -1\n");
+            }
+
+            std::cout << whoBuf;
+        }
+        // Command : @username message
+        // To server: SEND username this is a message\n
+        else if(command.at(0) == '@'){
+            std::string message;
+            char messBuf[9];
+            std::getline (std::cin, message);   // Get the message from cin
+            std::string userName = command.erase(0, 1); // Erase the @ from the @<name>
+//            message = message.erase(0, 1);              // Erase the space from after @<name>
+            std::stringstream toSend;
+            toSend << "SEND " << userName << message << "\n";
+            std::string toSendStr = toSend.str();
+            const char *byteSend = toSendStr.c_str();
+
+            ssize_t messageRes = send(handle, byteSend, toSendStr.length(), 0);
+            if((int) messageRes == -1){
+                fprintf(stderr, "send Error: -1");
+            }
+
+            ssize_t messageRec = recv(handle, messBuf, 9, 0);
+            if((int) messageRec == -1){
+                fprintf(stderr, "receive error: -1");
+            }
+
+            std::cout << messBuf;
+
+        }
+
+
+        else{
+            fprintf(stderr, "Command not recognised\n");
+        }
+
+    };
 
     /**
      * Assignment 4
@@ -84,9 +142,9 @@ private:
             exit(EXIT_FAILURE);
         }
 
-        int handle = socket(AF_INET, SOCK_STREAM, 0);
+        handle = socket(AF_INET, SOCK_STREAM, 0);
         if(handle < 0) {
-            fprintf(stderr, "connect: %s\n", gai_strerror(handle));
+            fprintf(stderr, "socket: %s\n", gai_strerror(handle));
         }
 
         int connection = connect(handle, res->ai_addr, res->ai_addrlen);

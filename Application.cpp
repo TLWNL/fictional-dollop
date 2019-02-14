@@ -9,14 +9,6 @@
 
 void Application::run() {
     while (!this->stop) {
-        std::string command;
-        std::cout << "Please enter your command:\n";
-        std::cin >> command;
-        if (strcmp(command.c_str(), "!quit") == 0) {
-            std::cout << "Stopping Application";
-            stopApplication();
-        }
-
         this->tick();
     }
 }
