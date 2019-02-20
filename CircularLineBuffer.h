@@ -37,6 +37,10 @@ public:
     bool writeChars(const char *chars, size_t nchars);
 
     std::string readLine();
+
+    void mutexUnlock(std::mutex mtx);
+
+    char* increaseBuffer(char buffer[]);
 };
 
 

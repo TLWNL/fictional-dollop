@@ -14,7 +14,6 @@ void Application::run() {
 }
 
 void Application::stopApplication() {
-//    std::cout << "Stopping Application\n";
     this->stop = true;
 }
 
