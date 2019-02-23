@@ -17,42 +17,42 @@ void Client::tick() {
     }
     else if (strcmp(command.c_str(),  "!who") == 0){
         char const *who = "WHO\n";
-        char whoBuf[1024];
+        char who_buffer[1024];
 
-        ssize_t whoRes = send(handle, who, 5, 0);
-        if((int) whoRes == -1){
+        ssize_t who_result = send(handle, who, 5, 0);
+        if((int) who_result == -1){
             fprintf(stderr, "send Error: -1\n");
         }
 
-        ssize_t receive = recv(handle, whoBuf, 1024, 0);
-        if((int) receive == -1){
+        ssize_t receive_result = recv(handle, who_buffer, 1024, 0);
+        if((int) receive_result == -1){
             fprintf(stderr, "receive error: -1\n");
         }
 
-        std::cout << whoBuf;
+        std::cout << who_buffer;
     }
 
     else if(command.at(0) == '@'){
         std::string message;
-        char messBuf[9];
+        char message_buffer[9];
         std::getline (std::cin, message);   // Get the message from cin
         std::string userName = command.erase(0, 1); // Erase the @ from the @<name>
 
-        std::stringstream toSend;
-        toSend << "SEND " << userName << message << "\n";
-        std::string toSendStr = toSend.str();
-        const char *byteSend = toSendStr.c_str();
+        std::stringstream to_send;
+        to_send << "SEND " << userName << message << "\n";
+        std::string to_send_str = to_send.str();
+        const char *byteSend = to_send_str.c_str();
 
-        ssize_t messageRes = send(handle, byteSend, toSendStr.length(), 0);
-        if((int) messageRes == -1){
+        ssize_t message_result = send(handle, byteSend, to_send_str.length(), 0);
+        if((int) message_result == -1){
             fprintf(stderr, "send Error: -1");
         }
 
-        ssize_t messageRec = recv(handle, messBuf, 9, 0);
-        if((int) messageRec == -1){
+        ssize_t message_receive = recv(handle, message_buffer, 9, 0);
+        if((int) message_receive == -1){
             fprintf(stderr, "receive error: -1");
         }
-        std::cout << messBuf;
+        std::cout << message_buffer;
     }
 
     else{
@@ -72,17 +72,16 @@ void Client::createSocketAndLogIn(){
     struct addrinfo hints{}, *res;
     const char *ip = "52.58.97.202";
     const char *port = "5378";
-//    const void *recvBuffer;
-    std::string loginName;
+    std::string login_name;
     char buf[500];
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_protocol = IPPROTO_TCP;
     hints.ai_flags = 0;
 
-    int myInfo = getaddrinfo(ip, port, &hints, &res);
-    if (myInfo != 0) {
-        fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(myInfo));
+    int my_info = getaddrinfo(ip, port, &hints, &res);
+    if (my_info != 0) {
+        fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(my_info));
         exit(EXIT_FAILURE);
     }
 
@@ -99,27 +98,27 @@ void Client::createSocketAndLogIn(){
     freeaddrinfo(res);
 
     std::cout << "Please enter your log-in name: ";
-    std::cin >> loginName;
+    std::cin >> login_name;
 
-    std::stringstream ss;
-    ss << "HELLO-FROM " << loginName << "\n";
-    std::string handshake = ss.str();
+    std::stringstream string_stream;
+    string_stream << "HELLO-FROM " << login_name << "\n";
+    std::string handshake = string_stream.str();
     char const *byteShake = handshake.c_str();
 
-    ssize_t sendRes = send(handle, byteShake, handshake.size(), 0);
-    if(sendRes == -1){
+    ssize_t send_result = send(handle, byteShake, handshake.size(), 0);
+    if(send_result == -1){
         fprintf(stderr, "send error: -1");
     }
 
-    size_t bytesToReceive = 6 + loginName.length();
-    ssize_t receive = recv(handle, buf, bytesToReceive, 0);
+    size_t bytes_to_receive = 6 + login_name.length();
+    ssize_t receive = recv(handle, buf, bytes_to_receive, 0);
     if((int) receive == -1){
         fprintf(stderr, "receive error: -1");
     }
 
-    const char* inUse = "IN-USE\n";
-    if(strcmp(buf, inUse) == 0){
-        fprintf(stderr, "Username %s is already in use, please enter another one:", loginName.c_str());
+    const char* in_use = "IN-USE\n";
+    if(strcmp(buf, in_use) == 0){
+        fprintf(stderr, "Username %s is already in use, please enter another one:", login_name.c_str());
     }
 
     std::cout << buf << "\n";
@@ -129,3 +128,4 @@ void Client::closeSocket(){
     sock_close(sock);
     sock_quit();
 }
+

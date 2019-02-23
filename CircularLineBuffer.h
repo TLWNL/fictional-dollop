@@ -21,6 +21,7 @@ private:
     char buffer[bufferSize] = {0};
     std::mutex mtx;
     int start = 0, count = 0;
+
 public:
     int freeSpace();
 
@@ -37,8 +38,6 @@ public:
     bool writeChars(const char *chars, size_t nchars);
 
     std::string readLine();
-
-    void mutexUnlock(std::mutex mtx);
 
     char* increaseBuffer(char buffer[]);
 };

@@ -1,25 +1,26 @@
 //
 // Created by dylan on 2/7/19.
 //
+
 #include "CircularLineBuffer.h"
-#include <string>
+#include <string.h>
 
 int CircularLineBuffer::freeSpace() {
+    int amount_of_space = 0;
     while(!mtx.try_lock())
         mtx.try_lock();
-    mtx.unlock();
 
-    int amountOfSpace = 0;
     for (char i : buffer) {
         if(i == 0){
-            amountOfSpace++;
+            amount_of_space++;
         }
     }
-    return amountOfSpace;
+    mtx.unlock();
+    return amount_of_space;
 }
 
 bool CircularLineBuffer::isFull(){
-    return count == 100;
+    return count == bufferSize;
 };
 
 bool CircularLineBuffer::isEmpty() {
@@ -39,20 +40,22 @@ int CircularLineBuffer::nextFreeIndex() {
 }
 
 int CircularLineBuffer::findNewline() {
-    return nextFreeIndex();
-//    return 0;
+    for (char i : buffer) {
+        if(i == '\\'){
+            if(i + 1 == 'n')
+                return i;
+        }
+    }
+    return -1;
 }
 
 bool CircularLineBuffer::hasLine() {
-//    if(mtx.try_lock())
-
-    return false;
+    return findNewline() < 0;
 }
 
 bool CircularLineBuffer::writeChars(const char *chars, size_t nchars) {
     while(!mtx.try_lock())
         mtx.try_lock();
-    mtx.unlock();
 
     if (isFull())
         return false;
@@ -64,50 +67,49 @@ bool CircularLineBuffer::writeChars(const char *chars, size_t nchars) {
         }
     }
 
-    mtx.lock();
+    mtx.unlock();
     return true;
 }
 std::string CircularLineBuffer::readLine() {
-    std::string returnString;
+    std::string return_string;
+    int newline_index = findNewline();
+
     while(!mtx.try_lock())
         mtx.try_lock();
-    mtx.unlock();
-//    mutexUnlock(mtx);
 
     for(int i = start; i < bufferSize; i++){
         if(buffer[i] == 0)
-            return returnString;
+            return return_string;
 
-        returnString.append(&buffer[i]);
+        return_string.append(&buffer[i]);
         buffer[i] = 0;
         count--;
     }
     for(int j = 0; j < start; j++){
         if(buffer[j] == 0)
-            return returnString;
-        returnString.append(&buffer[j]);
+            return return_string;
+        return_string.append(&buffer[j]);
         buffer[j] = 0;
         count--;
     }
 
-    std::string errorString = "Error while reading line!\n";
-    return errorString;
-
-
-}
-void CircularLineBuffer::mutexUnlock(std::mutex mtx){
-    while(!mtx.try_lock())
-        mtx.try_lock();
+    std::string error_string = "Error while reading line!\n";
     mtx.unlock();
+    return error_string;
 }
+
 
 char* CircularLineBuffer::increaseBuffer(char *buffer) {
-    char* extendo[2 * bufferSize] = {0};
-    for(int i = 0; i < bufferSize; i++){
+    while(!mtx.try_lock())
+        mtx.try_lock();
+
+    char *extendo[2 * bufferSize] = {0};
+    for(int i = start; i < bufferSize; i++){
         extendo[i] = &buffer[i];
     }
-
+    for(int j = 0; j < start; j++){
+        extendo[j] = &buffer[j];
+    }
+    mtx.unlock();
     return *extendo;
 }
-
-
