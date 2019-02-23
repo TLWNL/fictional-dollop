@@ -1,7 +1,7 @@
 //
 // Created by dylan on 2/7/19.
 //
-
+//
 #include "CircularLineBuffer.h"
 #include <string.h>
 
@@ -54,15 +54,29 @@ bool CircularLineBuffer::hasLine() {
 }
 
 bool CircularLineBuffer::writeChars(const char *chars, size_t nchars) {
+    bool loop = false;
+    int chars_written = 0;
     while(!mtx.try_lock())
         mtx.try_lock();
 
     if (isFull())
         return false;
 
-    if (isEmpty()){
-        for(int i = 0; i< nchars; i++){
-            buffer[i] = chars[i];
+    for(int i = start + count; i< nchars; i++){
+        if(i >= bufferSize) {
+            loop = true;
+            break;
+        }
+        buffer[i] = chars[i];
+        chars_written++;
+        count++;
+    }
+    if(loop){
+        for(int j = 0; j < nchars - chars_written; j++){
+            if(j == start)
+                return false;
+            buffer[j] = chars[chars_written];
+            chars_written++;
             count++;
         }
     }
@@ -78,6 +92,9 @@ std::string CircularLineBuffer::readLine() {
         mtx.try_lock();
 
     for(int i = start; i < bufferSize; i++){
+        if(i == newline_index)
+            return return_string;
+
         if(buffer[i] == 0)
             return return_string;
 
@@ -86,6 +103,9 @@ std::string CircularLineBuffer::readLine() {
         count--;
     }
     for(int j = 0; j < start; j++){
+        if(j == newline_index)
+            return return_string;
+
         if(buffer[j] == 0)
             return return_string;
         return_string.append(&buffer[j]);

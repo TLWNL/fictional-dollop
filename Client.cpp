@@ -1,10 +1,9 @@
 //
 // Created by dylan on 2/7/19.
 //
+
 #include <iostream>
 #include "Client.h"
-
-
 
 void Client::tick() {
     std::string command;
@@ -124,8 +123,7 @@ void Client::createSocketAndLogIn(){
     std::cout << buf << "\n";
 }
 
-void Client::closeSocket(){
+void Client::closeSocket() {
     sock_close(sock);
     sock_quit();
 }
-
