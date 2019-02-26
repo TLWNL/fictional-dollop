@@ -1,7 +1,7 @@
 //
 // Created by dylan on 2/7/19.
 //
-//
+
 #include "CircularLineBuffer.h"
 #include <string.h>
 
@@ -16,12 +16,13 @@ int CircularLineBuffer::freeSpace() {
         }
     }
     mtx.unlock();
+
     return amount_of_space;
 }
 
 bool CircularLineBuffer::isFull(){
     return count == bufferSize;
-};
+}
 
 bool CircularLineBuffer::isEmpty() {
     return count == 0;
@@ -46,6 +47,7 @@ int CircularLineBuffer::findNewline() {
                 return i;
         }
     }
+
     return -1;
 }
 
@@ -84,6 +86,7 @@ bool CircularLineBuffer::writeChars(const char *chars, size_t nchars) {
     mtx.unlock();
     return true;
 }
+
 std::string CircularLineBuffer::readLine() {
     std::string return_string;
     int newline_index = findNewline();
@@ -115,9 +118,9 @@ std::string CircularLineBuffer::readLine() {
 
     std::string error_string = "Error while reading line!\n";
     mtx.unlock();
+
     return error_string;
 }
-
 
 char* CircularLineBuffer::increaseBuffer(char *buffer) {
     while(!mtx.try_lock())
@@ -131,5 +134,6 @@ char* CircularLineBuffer::increaseBuffer(char *buffer) {
         extendo[j] = &buffer[j];
     }
     mtx.unlock();
+
     return *extendo;
 }
