@@ -1,23 +1,23 @@
-//
-// Created by Jesse on 2019-01-03.
-//
-
 #ifndef CPP_CHAT_CLIENT_VUSOCKET_H
 #define CPP_CHAT_CLIENT_VUSOCKET_H
 
 /**
+ * These methods are already implemented and are for you to use in your lab assignment.
+ * Many simply forward the arguments to an Operating System specific routine.
+ * This thin wrapper makes the assignment work on multiple platforms.
+ *
  * Socket example based on https://stackoverflow.com/questions/28027937/cross-platform-sockets
  */
 
 #include <iostream>
 
 #ifdef _WIN32
-    /* See http://stackoverflow.com/questions/12765743/getaddrinfo-on-win32 */
-    #ifndef _WIN32_WINNT
-        #define _WIN32_WINNT 0x0A00   /* Windows 10. */
-    #endif
-    #include <winsock2.h>
-    #include <Ws2tcpip.h>
+/* See http://stackoverflow.com/questions/12765743/getaddrinfo-on-win32 */
+#ifndef _WIN32_WINNT
+#define _WIN32_WINNT 0x0A00   /* Windows 10. */
+#endif
+#include <winsock2.h>
+#include <Ws2tcpip.h>
 #else
 /* Assume that any non-Windows platform uses POSIX-style sockets instead. */
     #include <sys/socket.h>

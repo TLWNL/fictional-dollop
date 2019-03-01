@@ -4,18 +4,15 @@
 
 #include "CircularLineBuffer.h"
 #include <string.h>
+#include <cstdlib>
 
 int CircularLineBuffer::freeSpace() {
     int amount_of_space = 0;
-    while(!mtx.try_lock())
-        mtx.try_lock();
 
     for (char i : buffer) {
-        if(i == 0){
+        if(i == 0)
             amount_of_space++;
-        }
     }
-    mtx.unlock();
 
     return amount_of_space;
 }
@@ -32,46 +29,52 @@ int CircularLineBuffer::nextFreeIndex() {
     if(isFull())
         return -1;
 
-    for(int i = 0; i<100; i++){
+    for(int i = start; i<bufferSize; i++){
        if(buffer[i] == 0)
            return i;
+    }
+    for(int j = 0; j<start; j++){
+        if(buffer[j] == 0)
+            return j;
     }
 
     return -2;
 }
 
 int CircularLineBuffer::findNewline() {
-    for (char i : buffer) {
-        if(i == '\\'){
-            if(i + 1 == 'n')
-                return i;
-        }
+    for(int i = start; i<bufferSize; i++) {
+        if(i == '\n')
+            return std::abs(start-i);
     }
-
+    for(int j = 0; j < start; j++) {
+        if(j == '\n')
+            return std::abs(start-bufferSize) + j;          // Amount of steps from start to end + steps from 0.
+    }
     return -1;
 }
 
 bool CircularLineBuffer::hasLine() {
-    return findNewline() < 0;
+    return findNewline() > 0;
 }
 
-bool CircularLineBuffer::writeChars(const char *chars, size_t nchars) {
+bool CircularLineBuffer::_writeChars(const char *chars, size_t nchars) {
     bool loop = false;
     int chars_written = 0;
-    while(!mtx.try_lock())
-        mtx.try_lock();
 
-    if (isFull())
+    if(nchars > freeSpace())
         return false;
 
+//    if(isEmpty())
+//        fresh_start = true;
+
     for(int i = start + count; i< nchars; i++){
-        if(i >= bufferSize) {
+        if(i > bufferSize) {
             loop = true;
             break;
         }
         buffer[i] = chars[i];
-        chars_written++;
         count++;
+        chars_written++;
     }
     if(loop){
         for(int j = 0; j < nchars - chars_written; j++){
@@ -82,17 +85,18 @@ bool CircularLineBuffer::writeChars(const char *chars, size_t nchars) {
             count++;
         }
     }
+//    if(chars[nchars] == '\n')
+//        fresh_start = false;
 
-    mtx.unlock();
     return true;
 }
 
-std::string CircularLineBuffer::readLine() {
+std::string CircularLineBuffer::_readLine() {
     std::string return_string;
     int newline_index = findNewline();
 
-    while(!mtx.try_lock())
-        mtx.try_lock();
+    if(findNewline() == -1)
+        return return_string;
 
     for(int i = start; i < bufferSize; i++){
         if(i == newline_index)
@@ -117,23 +121,5 @@ std::string CircularLineBuffer::readLine() {
     }
 
     std::string error_string = "Error while reading line!\n";
-    mtx.unlock();
-
     return error_string;
-}
-
-char* CircularLineBuffer::increaseBuffer(char *buffer) {
-    while(!mtx.try_lock())
-        mtx.try_lock();
-
-    char *extendo[2 * bufferSize] = {0};
-    for(int i = start; i < bufferSize; i++){
-        extendo[i] = &buffer[i];
-    }
-    for(int j = 0; j < start; j++){
-        extendo[j] = &buffer[j];
-    }
-    mtx.unlock();
-
-    return *extendo;
 }
