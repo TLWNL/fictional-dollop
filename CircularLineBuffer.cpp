@@ -37,7 +37,6 @@ int CircularLineBuffer::nextFreeIndex() {
         if(buffer[j] == 0)
             return j;
     }
-
     return -2;
 }
 
@@ -64,18 +63,17 @@ bool CircularLineBuffer::_writeChars(const char *chars, size_t nchars) {
     if(nchars > freeSpace())
         return false;
 
-
     for(int i = start + count; i< nchars; i++){
         if(i > bufferSize) {
             loop = true;
             break;
         }
-        buffer[i] = chars[i];
+        buffer[i] = chars[chars_written];
         count++;
         chars_written++;
     }
     if(loop){
-        for(int j = 0; j < nchars - chars_written; j++){
+        for(int j = 0; j < nchars - chars_written; j++){            // Ask if changing the chars_written variable fucks with the loop?
             if(j == start)
                 return false;
             buffer[j] = chars[chars_written];
@@ -83,37 +81,43 @@ bool CircularLineBuffer::_writeChars(const char *chars, size_t nchars) {
             count++;
         }
     }
-
     return true;
 }
 
 std::string CircularLineBuffer::_readLine() {
     std::string return_string;
     int newline_index = findNewline();
+    bool loop = false;
 
     if(findNewline() == -1)
         return return_string;               // Return empty string if there is no full line
 
     for(int i = start; i < bufferSize; i++){
-        if(std::abs(start-i) == newline_index)
+        if(buffer[i] == '\n')
             return return_string;
+        if(i > bufferSize) {
+            loop = true;
+            break;
+        }
 
-        if(buffer[i] == 0)
-            return return_string;
+//        if(buffer[i] == 0)                // Ask if we must terminate as well if we read an empty space.
+//            return return_string;
 
         return_string.append(&buffer[i]);
-        buffer[i] = 0;
+//        buffer[i] = 0;
 //        count--;
     }
-    for(int j = 0; j < start; j++){
-        if(j == newline_index)
-            return return_string;
+    if(loop) {
+        for (int j = 0; j < start; j++) {
+            if (buffer[j] == '\n')
+                return return_string;
 
-        if(buffer[j] == 0)
-            return return_string;
-        return_string.append(&buffer[j]);
-        buffer[j] = 0;
-//        count--;
+            if (buffer[j] == 0)
+                return return_string;
+            return_string.append(&buffer[j]);
+            //        buffer[j] = 0;
+            //        count--;
+        }
     }
 
     std::string error_string = "Error while reading line!\n";
