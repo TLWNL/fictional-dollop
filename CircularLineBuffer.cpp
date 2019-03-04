@@ -64,8 +64,6 @@ bool CircularLineBuffer::_writeChars(const char *chars, size_t nchars) {
     if(nchars > freeSpace())
         return false;
 
-//    if(isEmpty())
-//        fresh_start = true;
 
     for(int i = start + count; i< nchars; i++){
         if(i > bufferSize) {
@@ -85,8 +83,6 @@ bool CircularLineBuffer::_writeChars(const char *chars, size_t nchars) {
             count++;
         }
     }
-//    if(chars[nchars] == '\n')
-//        fresh_start = false;
 
     return true;
 }
@@ -96,10 +92,10 @@ std::string CircularLineBuffer::_readLine() {
     int newline_index = findNewline();
 
     if(findNewline() == -1)
-        return return_string;
+        return return_string;               // Return empty string if there is no full line
 
     for(int i = start; i < bufferSize; i++){
-        if(i == newline_index)
+        if(std::abs(start-i) == newline_index)
             return return_string;
 
         if(buffer[i] == 0)
@@ -107,7 +103,7 @@ std::string CircularLineBuffer::_readLine() {
 
         return_string.append(&buffer[i]);
         buffer[i] = 0;
-        count--;
+//        count--;
     }
     for(int j = 0; j < start; j++){
         if(j == newline_index)
@@ -117,7 +113,7 @@ std::string CircularLineBuffer::_readLine() {
             return return_string;
         return_string.append(&buffer[j]);
         buffer[j] = 0;
-        count--;
+//        count--;
     }
 
     std::string error_string = "Error while reading line!\n";

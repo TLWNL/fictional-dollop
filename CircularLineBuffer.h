@@ -18,7 +18,6 @@ private:
      */
     static const int bufferSize = 4096;
     char buffer[bufferSize] = {0};
-    bool fresh_start;
 
     /**
      * You may ignore this variable.
@@ -105,8 +104,6 @@ public:
      * @return true if and only if (iff) there is at least one complete line in the buffer.
      */
     bool hasLine();
-
-
 
     /**
      * This method writes the given number of characters into the buffer.
