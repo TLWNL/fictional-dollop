@@ -1,12 +1,10 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/cpp-chat-client.dir/main.cpp.obj"
-  "CMakeFiles/cpp-chat-client.dir/Client.cpp.obj"
-  "CMakeFiles/cpp-chat-client.dir/vusocket.cpp.obj"
-  "CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.obj"
+  "CMakeFiles/cpp-chat-client.dir/main.cpp.o"
+  "CMakeFiles/cpp-chat-client.dir/Client.cpp.o"
+  "CMakeFiles/cpp-chat-client.dir/vusocket.cpp.o"
+  "CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.o"
   "cpp-chat-client.pdb"
-  "cpp-chat-client.exe"
-  "cpp-chat-client.exe.manifest"
-  "libcpp-chat-client.dll.a"
+  "cpp-chat-client"
 )
 
 # Per-language clean rules from dependency scanning.

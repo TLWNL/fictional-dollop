@@ -5,25 +5,25 @@
 #include <iostream>
 #include "Client.h"
 
-void Client::tick() {
+int Client::tick() {
     std::string command;
     std::cout << "Please enter your command:\n";
     std::cin >> command;
 
     if (strcmp(command.c_str(), "!quit") == 0) {
         std::cout << "Stopping Application";
-        stopApplication();
+        return -1;
     }
     else if (strcmp(command.c_str(),  "!who") == 0){
         char who_buffer[1024];
         memset(&who_buffer, 0, sizeof(who_buffer));
 
-        ssize_t who_result = send(handle, "WHO\n", 4, 0);
+        ssize_t who_result = send(this->sock, "WHO\n", 4, 0);
         if((int) who_result == -1){
             fprintf(stderr, "send Error: -1\n");
         }
 
-        ssize_t receive_result = recv(handle, who_buffer, 1024, 0);
+        ssize_t receive_result = recv(this->sock, who_buffer, 1024, 0);
 
         if((int) receive_result == -1){
             fprintf(stderr, "receive error: -1\n");
@@ -42,12 +42,12 @@ void Client::tick() {
         message = "SEND " + userName + message +"\n";
         const char *byteSend = message.c_str();
 
-        ssize_t message_result = send(handle, byteSend, strlen(byteSend), 0);
+        ssize_t message_result = send(this->sock, byteSend, strlen(byteSend), 0);
         if((int) message_result == -1){
             fprintf(stderr, "send Error: -1");
         }
 
-        ssize_t message_receive = recv(handle, message_buffer, 8, 0);
+        ssize_t message_receive = recv(this->sock, message_buffer, 8, 0);
 
         if((int) message_receive == -1){
             fprintf(stderr, "receive error: -1");
@@ -58,6 +58,7 @@ void Client::tick() {
     else{
         fprintf(stderr, "Command not recognised\n");
     }
+    return 0;
 }
 
 int Client::readFromStdin(){
@@ -85,12 +86,12 @@ void Client::createSocketAndLogIn(){
         exit(EXIT_FAILURE);
     }
 
-    handle = socket(AF_INET, SOCK_STREAM, 0);
-    if(handle < 0) {
-        fprintf(stderr, "socket: %s\n", gai_strerror(handle));
-    }
+    this->sock = socket(AF_INET, SOCK_STREAM, 0);
+//    if(sock < 0) {
+//        fprintf(stderr, "socket: %s\n", gai_strerror(sock));
+//    }
 
-    int connection = connect(handle, res->ai_addr, res->ai_addrlen);
+    int connection = connect(this->sock, res->ai_addr, res->ai_addrlen);
     if(connection != 0) {
         fprintf(stderr, "connect: %s\n", gai_strerror(connection));
     }
@@ -103,7 +104,7 @@ void Client::createSocketAndLogIn(){
     login_message = "HELLO-FROM " + login_name + "\n";
     char const *byteShake = login_message.c_str();
 
-    ssize_t send_result = send(handle, byteShake, strlen(byteShake), 0);
+    ssize_t send_result = send(this->sock, byteShake, strlen(byteShake), 0);
     if(send_result == -1){
         fprintf(stderr, "send error: -1");
     }
@@ -111,7 +112,7 @@ void Client::createSocketAndLogIn(){
     std::string receive_str = "HELLO " + login_name + "\n";
     char const *to_receive2 = receive_str.c_str();
 
-    ssize_t receive = recv(handle, buf, strlen(to_receive2), 0);
+    ssize_t receive = recv(this->sock, buf, strlen(to_receive2), 0);
     if((int) receive == -1){
         fprintf(stderr, "receive error: -1");
     }
@@ -125,6 +126,6 @@ void Client::createSocketAndLogIn(){
 }
 
 void Client::closeSocket() {
-    sock_close(sock);
+    sock_close(this->sock);
     sock_quit();
 }

@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/Documents/Computer Science/Computer Networks/Chat Client/fictional-dollop/CircularLineBuffer.cpp" "D:/Documents/Computer Science/Computer Networks/Chat Client/fictional-dollop/cmake-build-debug/CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.obj"
-  "D:/Documents/Computer Science/Computer Networks/Chat Client/fictional-dollop/Client.cpp" "D:/Documents/Computer Science/Computer Networks/Chat Client/fictional-dollop/cmake-build-debug/CMakeFiles/cpp-chat-client.dir/Client.cpp.obj"
-  "D:/Documents/Computer Science/Computer Networks/Chat Client/fictional-dollop/main.cpp" "D:/Documents/Computer Science/Computer Networks/Chat Client/fictional-dollop/cmake-build-debug/CMakeFiles/cpp-chat-client.dir/main.cpp.obj"
-  "D:/Documents/Computer Science/Computer Networks/Chat Client/fictional-dollop/vusocket.cpp" "D:/Documents/Computer Science/Computer Networks/Chat Client/fictional-dollop/cmake-build-debug/CMakeFiles/cpp-chat-client.dir/vusocket.cpp.obj"
+  "/home/dylan/School/Computer Networks/cpp-chat-client/CircularLineBuffer.cpp" "/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles/cpp-chat-client.dir/CircularLineBuffer.cpp.o"
+  "/home/dylan/School/Computer Networks/cpp-chat-client/Client.cpp" "/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles/cpp-chat-client.dir/Client.cpp.o"
+  "/home/dylan/School/Computer Networks/cpp-chat-client/main.cpp" "/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles/cpp-chat-client.dir/main.cpp.o"
+  "/home/dylan/School/Computer Networks/cpp-chat-client/vusocket.cpp" "/home/dylan/School/Computer Networks/cpp-chat-client/cmake-build-debug/CMakeFiles/cpp-chat-client.dir/vusocket.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
