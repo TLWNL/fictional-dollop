@@ -6,6 +6,7 @@
 #include "Client.h"
 
 int Client::tick() {
+
     std::string command;
     std::cout << "Please enter your command:\n";
     std::cin >> command;

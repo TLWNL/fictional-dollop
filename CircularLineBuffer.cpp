@@ -47,7 +47,7 @@ int CircularLineBuffer::findNewline() {
     }
     for(int j = 0; j < start; j++) {
         if(j == '\n')
-            return std::abs(start-bufferSize) + j;          // Amount of steps from start to end + steps from 0.
+            return bufferSize-start + j;          // Amount of steps from start to end + steps from 0.
     }
     return -1;
 }
@@ -86,7 +86,7 @@ bool CircularLineBuffer::_writeChars(const char *chars, size_t nchars) {
 
 std::string CircularLineBuffer::_readLine() {
     std::string return_string;
-    int newline_index = findNewline();
+//    int newline_index = findNewline();
     bool loop = false;
 
     if(findNewline() == -1)
@@ -104,22 +104,20 @@ std::string CircularLineBuffer::_readLine() {
 //            return return_string;
 
         return_string.append(&buffer[i]);
-//        buffer[i] = 0;
-//        count--;
     }
     if(loop) {
         for (int j = 0; j < start; j++) {
             if (buffer[j] == '\n')
                 return return_string;
 
-            if (buffer[j] == 0)
-                return return_string;
+//            if (buffer[j] == 0)
+//                return return_string;
             return_string.append(&buffer[j]);
-            //        buffer[j] = 0;
-            //        count--;
         }
     }
 
-    std::string error_string = "Error while reading line!\n";
-    return error_string;
+    // Change the starting position to 1 element after the end-line
+    this->start = findNewline() + 1;
+
+    return "Error while reading line!\n";
 }
