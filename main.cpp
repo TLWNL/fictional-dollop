@@ -9,7 +9,7 @@ int main(int nargs, char **argv) {
     std::cout << "Computer Networks Chat Client Starting..." << std::endl;
     Client client;
     std::cout << "Setting up" << std::endl;
-    client.setup();
+//    client.setup();           // Commented out for ease of debugging.
     std::cout << "Running application" << std::endl;
     client.checkBuffer();
     while (!client.stop && client.tick() >= 0) {
