@@ -134,8 +134,10 @@ void Client::closeSocket() {
 
 void Client::checkBuffer() {
     stdinBuffer.writeChars("ABCDEFF\n", 8);
-    stdinBuffer.writeChars("MAGNIEDJOEK\n", 12);
-//    std::cout << stdinBuffer.findNewline();
     std::cout << stdinBuffer.readLine() << std::endl;
+    stdinBuffer.writeChars("MAGNIE\n", 7);
     std::cout << stdinBuffer.readLine() << std::endl;
+    stdinBuffer.writeChars("KANKER", 6);
+    stdinBuffer.writeChars("DJOEKER\n", 8);
+    stdinBuffer.readLine();
 }
