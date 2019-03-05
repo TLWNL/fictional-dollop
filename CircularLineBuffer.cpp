@@ -27,20 +27,6 @@ int CircularLineBuffer::nextFreeIndex() {
 }
 
 int CircularLineBuffer::findNewline() {
-    // Might not be optimal, as it runs though the entire buffer instead of the amount of characters in use.
-//    for(int i = start; i < bufferSize; i++) {           // From start to end of buffer check for '\n'
-//        if(buffer[i] == '\n' && i >! count) {          // Only return if the element is in the range of count, as those chars only are used.
-//            std::cout << "i = " << i << std::endl;
-//            return i;
-//        }
-//    }
-//    for(int j = 0; j < start; j++) {                    // From begin of buffer to start check for '\n'
-//        if(buffer[j] == '\n' && (bufferSize - start) + j >! count) {
-//            std::cout << "j = " << j << std::endl;
-//            return j;
-//        }
-//    }
-//
     if(start + count > bufferSize){                       // If we loop around
         for(int i = start; i < bufferSize; i++){
             if(buffer[i] == '\n') {
@@ -57,7 +43,6 @@ int CircularLineBuffer::findNewline() {
     else{
         for(int m = start; m < start+count; m++){
             if(buffer[m] == '\n') {
-                std::cout << "m =" << m << std::endl;
                 return m;
             }
         }
