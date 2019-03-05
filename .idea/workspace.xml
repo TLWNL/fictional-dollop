@@ -11,7 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="279283f8-9705-49ab-ac2a-813f529214df" name="Default Changelist" comment="">
+    <list default="true" id="279283f8-9705-49ab-ac2a-813f529214df" name="Default Changelist" comment="Deleted a lot of 'this-&gt;'">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CircularLineBuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/CircularLineBuffer.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Client.cpp" afterDir="false" />
@@ -53,8 +53,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Client.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="378">
-                  <caret line="145" selection-start-line="145" selection-end-line="145" />
+                <state relative-caret-position="412">
+                  <caret line="143" column="40" lean-forward="true" selection-start-line="143" selection-start-column="40" selection-end-line="143" selection-end-column="40" />
                   <folding>
                     <element signature="e#38#57#0" expanded="true" />
                   </folding>
@@ -90,8 +90,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/CircularLineBuffer.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="256">
-                  <caret line="94" column="21" lean-forward="true" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
+                <state relative-caret-position="946">
+                  <caret line="92" column="18" lean-forward="true" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
                   <folding>
                     <element signature="e#38#69#0" expanded="true" />
                   </folding>
@@ -108,6 +108,7 @@
       <find>Client</find>
       <find>connect</find>
       <find>buf</find>
+      <find>this-&gt;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -126,8 +127,8 @@
         <option value="$PROJECT_DIR$/Client.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/CircularLineBuffer.h" />
-        <option value="$PROJECT_DIR$/Client.cpp" />
         <option value="$PROJECT_DIR$/CircularLineBuffer.cpp" />
+        <option value="$PROJECT_DIR$/Client.cpp" />
       </list>
     </option>
   </component>
@@ -207,7 +208,7 @@
       <workItem from="1550852355922" duration="5000" />
       <workItem from="1550951273194" duration="8411000" />
       <workItem from="1551183278861" duration="79000" />
-      <workItem from="1551739860341" duration="21177000" />
+      <workItem from="1551739860341" duration="23519000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed vTable error, program is now runnable">
       <created>1549639191482</created>
@@ -328,11 +329,25 @@
       <option name="project" value="LOCAL" />
       <updated>1551794506534</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="MagnieMagnieMagnie">
+      <created>1551795467124</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1551795467124</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Added a lot of 'this-&gt;'">
+      <created>1551797271711</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1551797271711</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87798000" />
+    <option name="totallyTimeSpent" value="90140000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1044" extended-state="6" />
@@ -342,8 +357,8 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32969433" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3995633" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32969433" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3995633" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -442,7 +457,10 @@
     <MESSAGE value="Updated some shite" />
     <MESSAGE value="Magnie" />
     <MESSAGE value="Kanker Djoeker" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kanker Djoeker" />
+    <MESSAGE value="MagnieMagnieMagnie" />
+    <MESSAGE value="Added a lot of 'this-&gt;'" />
+    <MESSAGE value="Deleted a lot of 'this-&gt;'" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted a lot of 'this-&gt;'" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -479,12 +497,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/CircularLineBuffer.cpp</url>
-          <line>108</line>
+          <line>109</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/CircularLineBuffer.cpp</url>
-          <line>93</line>
+          <line>94</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -624,6 +642,9 @@
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp-chat-client.dir/main.cpp.o">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -634,9 +655,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp-chat-client.dir/main.cpp.o">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/CircularLineBuffer.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -644,22 +662,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client.cpp">
+    <entry file="file://$PROJECT_DIR$/CircularLineBuffer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="145" selection-start-line="145" selection-end-line="145" />
+        <state relative-caret-position="946">
+          <caret line="92" column="18" lean-forward="true" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
           <folding>
-            <element signature="e#38#57#0" expanded="true" />
+            <element signature="e#38#69#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CircularLineBuffer.cpp">
+    <entry file="file://$PROJECT_DIR$/Client.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="94" column="21" lean-forward="true" selection-start-line="94" selection-start-column="21" selection-end-line="94" selection-end-column="21" />
+        <state relative-caret-position="412">
+          <caret line="143" column="40" lean-forward="true" selection-start-line="143" selection-start-column="40" selection-end-line="143" selection-end-column="40" />
           <folding>
-            <element signature="e#38#69#0" expanded="true" />
+            <element signature="e#38#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
