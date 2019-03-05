@@ -27,7 +27,7 @@ int CircularLineBuffer::nextFreeIndex() {
 }
 
 int CircularLineBuffer::findNewline() {
-    for(int i = start; i<bufferSize; i++) {
+    for(int i = start; i < bufferSize; i++) {
         if(buffer[i] == '\n')
             return i;
     }
@@ -62,7 +62,6 @@ bool CircularLineBuffer::_writeChars(const char *chars, size_t nchars) {
         chars_written++;
     }
     if(loop){
-//        std::cout << "Looping \n";
         int magnie;
         int chars_left = nchars - chars_written;
 
@@ -96,6 +95,8 @@ std::string CircularLineBuffer::_readLine() {
             count --;
             d++;
         }
+        if(buffer[d] == '\n')
+            count --;
     }
 
     for(int i = start; i < findNewline() +1; i++){            // change i < bufferSize to i < findNewLine()
@@ -109,15 +110,5 @@ std::string CircularLineBuffer::_readLine() {
         count--;
     }
 
-//    for (int j = 0; j < start; j++) {
-//        if (buffer[j] == '\n') {
-//            this->start = nextFreeIndex();
-//            count--;
-//            return return_string;
-//        }
-//        return_string += buffer[j];
-//        count--;
-//
-//    }
     return return_string;
 }
