@@ -28,13 +28,39 @@ int CircularLineBuffer::nextFreeIndex() {
 
 int CircularLineBuffer::findNewline() {
     // Might not be optimal, as it runs though the entire buffer instead of the amount of characters in use.
-    for(int i = start; i < bufferSize; i++) {           // From start to end of buffer check for '\n'
-        if(buffer[i] == '\n' && i >! count)             // Only return if the element is in the range of count, as those chars only are used.
-            return i;
+//    for(int i = start; i < bufferSize; i++) {           // From start to end of buffer check for '\n'
+//        if(buffer[i] == '\n' && i >! count) {          // Only return if the element is in the range of count, as those chars only are used.
+//            std::cout << "i = " << i << std::endl;
+//            return i;
+//        }
+//    }
+//    for(int j = 0; j < start; j++) {                    // From begin of buffer to start check for '\n'
+//        if(buffer[j] == '\n' && (bufferSize - start) + j >! count) {
+//            std::cout << "j = " << j << std::endl;
+//            return j;
+//        }
+//    }
+//
+    if(start + count > bufferSize){                       // If we loop around
+        for(int i = start; i < bufferSize; i++){
+            if(buffer[i] == '\n') {
+                return i;
+
+            }
+        }
+        for(int j = 0; j < count - (bufferSize - start); j++){
+            if(buffer[j] == '\n') {
+                return j;
+            }
+        }
     }
-    for(int j = 0; j < start; j++) {                    // From begin of buffer to start check for '\n'
-        if(buffer[j] == '\n' && (bufferSize - start) + j >! count)
-            return j;
+    else{
+        for(int m = start; m < start+count; m++){
+            if(buffer[m] == '\n') {
+                std::cout << "m =" << m << std::endl;
+                return m;
+            }
+        }
     }
 
     return -1;                                          // No end line has been found
@@ -81,12 +107,14 @@ bool CircularLineBuffer::_writeChars(const char *chars, size_t nchars) {
 
 std::string CircularLineBuffer::_readLine() {
     std::string return_string;
+    int end_of_line = findNewline();
 
-    if(findNewline() == -1)
+    if(findNewline() == -1) {
+        std::cout << "No full line!\n";
         return return_string;               // Return empty string if there is no full line
+    }
 
-
-    if(findNewline() < start){
+    if(end_of_line < start){
         for(int e = start; e < bufferSize; e++){            // Loops from start to end of buffer
             return_string += buffer[e];                     // Append character to return string
             count --;                                       // Decrease count
@@ -102,7 +130,7 @@ std::string CircularLineBuffer::_readLine() {
             count --;                                       // Makes sure count is correct
     }
 
-    for(int i = start; i <= findNewline(); i++){          // No loop in buffer, so append 'normally'
+    for(int i = start; i <= end_of_line; i++){          // No loop in buffer, so append 'normally'
         if(buffer[i] == '\n') {
             start = i+1;
             count--;

@@ -142,7 +142,7 @@ void Client::checkBuffer() {
     std::cout << stdinBuffer.readLine() << std::endl;
     stdinBuffer.writeChars("JIJMAG", 6);
     stdinBuffer.writeChars("NIEJIJ", 6);
-    if(stdinBuffer.writeChars("DJOEKERE\n",9))
-        std::cout << stdinBuffer.readLine() << std::endl;
+    stdinBuffer.writeChars("DJOEKERE\n",9);
+    std::cout << stdinBuffer.readLine() << std::endl;
 
 }
