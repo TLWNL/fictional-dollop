@@ -5,6 +5,7 @@
 #include "CircularLineBuffer.h"
 #include <string.h>
 #include <cstdlib>
+#include <iostream>
 
 int CircularLineBuffer::freeSpace() {
     int amount_of_space = 0;
@@ -42,12 +43,12 @@ int CircularLineBuffer::nextFreeIndex() {
 
 int CircularLineBuffer::findNewline() {
     for(int i = start; i<bufferSize; i++) {
-        if(i == '\n')
-            return std::abs(start-i);
+        if(buffer[i] == '\n')
+            return i;
     }
     for(int j = 0; j < start; j++) {
-        if(j == '\n')
-            return bufferSize-start + j;          // Amount of steps from start to end + steps from 0.
+        if(buffer[j] == '\n')
+            return j;
     }
     return -1;
 }
@@ -103,7 +104,7 @@ std::string CircularLineBuffer::_readLine() {
 //        if(buffer[i] == 0)                // Ask if we must terminate as well if we read an empty space.
 //            return return_string;
 
-        return_string.append(&buffer[i]);
+        return_string = return_string + buffer[i];
     }
     if(loop) {
         for (int j = 0; j < start; j++) {
@@ -112,12 +113,16 @@ std::string CircularLineBuffer::_readLine() {
 
 //            if (buffer[j] == 0)
 //                return return_string;
-            return_string.append(&buffer[j]);
+//            return_string.append(&buffer[j]);
+            return_string = return_string + buffer[j];
+
         }
     }
 
     // Change the starting position to 1 element after the end-line
-    this->start = findNewline() + 1;
+//    std::cout << findNewline();
+    this->start = findNewline() + 1;        // !!
+    std::cout << this->start << std::endl;
 
     return "Error while reading line!\n";
 }

@@ -11,6 +11,7 @@ int main(int nargs, char **argv) {
     std::cout << "Setting up" << std::endl;
     client.setup();
     std::cout << "Running application" << std::endl;
+    client.checkBuffer();
     while (!client.stop && client.tick() >= 0) {
         if(client.tick() == -1)
             client.stop = true;

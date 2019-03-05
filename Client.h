@@ -175,6 +175,8 @@ public:
      * @return -1 if anything went wrong, or when the user types '!exit'. 0 otherwise.
      */
     int tick();
+
+    void checkBuffer();
 };
 
 

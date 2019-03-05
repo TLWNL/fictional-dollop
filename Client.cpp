@@ -124,9 +124,18 @@ void Client::createSocketAndLogIn(){
     }
 
     std::cout << buf << "\n";
+
 }
 
 void Client::closeSocket() {
     sock_close(this->sock);
     sock_quit();
+}
+
+void Client::checkBuffer() {
+    stdinBuffer.writeChars("ABCDEFF\n", 8);
+    stdinBuffer.writeChars("MAGNIEDJOEK\n", 12);
+//    std::cout << stdinBuffer.findNewline();
+    std::cout << stdinBuffer.readLine() << std::endl;
+    std::cout << stdinBuffer.readLine() << std::endl;
 }
