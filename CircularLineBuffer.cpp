@@ -23,7 +23,7 @@ int CircularLineBuffer::nextFreeIndex() {
     if(isFull())
         return -1;
 
-    return start + count;
+    return start + count; //
 }
 
 int CircularLineBuffer::findNewline() {
@@ -65,8 +65,8 @@ bool CircularLineBuffer::_writeChars(const char *chars, size_t nchars) {
         return false;
     }
 
-    for(int i = start_point; i< start_point + nchars; i++){
-        if(i >= bufferSize) {
+    for(int i = start_point; i < start_point + nchars; i++){
+        if (i >= bufferSize) {
             loop = true;
             break;
         }

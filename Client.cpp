@@ -6,67 +6,95 @@
 #include "Client.h"
 
 int Client::tick() {
+    handleCommand();
+    if(socketBuffer.hasLine())
+        readFromSocket();
+    if(stdinBuffer.hasLine())
+        readFromStdin();
+    return 0;
+}
 
+
+int Client::handleCommand() {
     std::string command;
     std::cout << "Please enter your command:\n";
     std::cin >> command;
+
+    stdinBuffer.writeChars(command.c_str(), strlen(command.c_str()));
 
     if (strcmp(command.c_str(), "!quit") == 0) {
         std::cout << "Stopping Application";
         return -1;
     }
     else if (strcmp(command.c_str(),  "!who") == 0){
-        char who_buffer[1024];
-        memset(&who_buffer, 0, sizeof(who_buffer));
+        stdinBuffer.writeChars("WHO\n", 4);
+//        char who_buffer[1024];
+//        memset(&who_buffer, 0, sizeof(who_buffer));
+//
+//        ssize_t who_result = send(this->sock, "WHO\n", 4, 0);
+//        if((int) who_result == -1){
+//            fprintf(stderr, "send Error: -1\n");
+//        }
 
-        ssize_t who_result = send(this->sock, "WHO\n", 4, 0);
-        if((int) who_result == -1){
-            fprintf(stderr, "send Error: -1\n");
-        }
-
-        ssize_t receive_result = recv(this->sock, who_buffer, 1024, 0);
-
-        if((int) receive_result == -1){
-            fprintf(stderr, "receive error: -1\n");
-        }
-
-        std::cout << who_buffer;
+//        ssize_t receive_result = recv(this->sock, who_buffer, 1024, 0);
+//
+//        if((int) receive_result == -1){
+//            fprintf(stderr, "receive error: -1\n");
+//        }
+//
+//        std::cout << who_buffer;
     }
 
     else if(command.at(0) == '@'){
         std::string message;
         char message_buffer[14];
-        memset(&message_buffer, 0, sizeof(message_buffer));
+//        memset(&message_buffer, 0, sizeof(message_buffer));
         std::getline (std::cin, message);   // Get the message from cin
         std::string userName = command.erase(0, 1); // Erase the @ from the @<name>
 
         message = "SEND " + userName + message +"\n";
-        const char *byteSend = message.c_str();
-
-        ssize_t message_result = send(this->sock, byteSend, strlen(byteSend), 0);
-        if((int) message_result == -1){
-            fprintf(stderr, "send Error: -1");
-        }
-
-        ssize_t message_receive = recv(this->sock, message_buffer, 8, 0);
-
-        if((int) message_receive == -1){
-            fprintf(stderr, "receive error: -1");
-        }
-        std::cout << message_buffer;
+        const char *buffer_c_str = message.c_str();
+        stdinBuffer.writeChars(buffer_c_str, strlen(buffer_c_str));
+//
+//        ssize_t message_result = send(this->sock, byteSend, strlen(byteSend), 0);
+//        if((int) message_result == -1){
+//            fprintf(stderr, "send Error: -1");
+//        }
+//
+//        ssize_t message_receive = recv(this->sock, message_buffer, 8, 0);
+//
+//        if((int) message_receive == -1){
+//            fprintf(stderr, "receive error: -1");
+//        }
+//        std::cout << message_buffer;
     }
 
     else{
         fprintf(stderr, "Command not recognised\n");
     }
-    return 0;
 }
-
 int Client::readFromStdin(){
+    std::string to_buf;
+    std::cin >> to_buf;
+
+    if(!std::cin) {
+        fprintf(stderr, "Input error! \n");
+        return -1;
+    }
+
+    if(!stdinBuffer.writeChars(to_buf.c_str(), strlen(to_buf.c_str()))) {
+        fprintf(stderr, "Writing error, buffer is full! \n");
+        return -2;
+    }
+
     return 0;
 }
 
 int Client::readFromSocket() {
+    char socketBuf[500];
+    if(recv(this->sock, socketBuf, 500, 0) == -1)
+        fprintf(stderr, "receive error: -1");
+
     return 0;
 }
 
@@ -88,9 +116,6 @@ void Client::createSocketAndLogIn(){
     }
 
     this->sock = socket(AF_INET, SOCK_STREAM, 0);
-//    if(sock < 0) {
-//        fprintf(stderr, "socket: %s\n", gai_strerror(sock));
-//    }
 
     int connection = connect(this->sock, res->ai_addr, res->ai_addrlen);
     if(connection != 0) {
@@ -130,19 +155,4 @@ void Client::createSocketAndLogIn(){
 void Client::closeSocket() {
     sock_close(this->sock);
     sock_quit();
-}
-
-void Client::checkBuffer() {
-    stdinBuffer.writeChars("ABCDEFF\n", 8);
-    std::cout << stdinBuffer.readLine() << std::endl;
-    stdinBuffer.writeChars("MAGNIE\n", 7);
-    std::cout << stdinBuffer.readLine() << std::endl;
-    stdinBuffer.writeChars("OOOPSZ", 6);
-    stdinBuffer.writeChars("DJOEKER\n", 8);
-    std::cout << stdinBuffer.readLine() << std::endl;
-    stdinBuffer.writeChars("JIJMAG", 6);
-    stdinBuffer.writeChars("NIEJIJ", 6);
-    stdinBuffer.writeChars("DJOEKERE\n",9);
-    std::cout << stdinBuffer.readLine() << std::endl;
-
 }

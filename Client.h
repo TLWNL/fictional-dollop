@@ -176,7 +176,8 @@ public:
      */
     int tick();
 
-    void checkBuffer();
+    int handleCommand();
+
 };
 
 
