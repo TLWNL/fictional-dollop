@@ -6,10 +6,9 @@
 #include "Client.h"
 
 int Client::tick() {
-//    handleCommand();
-    if(socketBuffer.hasLine()) {
-        std::string sockString = readFromSocket();
-    }
+    handleCommand();
+    if(socketBuffer.hasLine())
+        readFromSocket();
     if(stdinBuffer.hasLine())
         readFromStdin();
     return 0;
@@ -50,12 +49,12 @@ int Client::handleCommand() {
         std::string message;
         char message_buffer[14];
 //        memset(&message_buffer, 0, sizeof(message_buffer));
-//        std::getline (std::cin, message);   // Get the message from cin
-//        std::string userName = command.erase(0, 1); // Erase the @ from the @<name>
-//
-//        message = "SEND " + userName + message +"\n";
-//        const char *buffer_c_str = message.c_str();
-//        stdinBuffer.writeChars(buffer_c_str, strlen(buffer_c_str));
+        std::getline (std::cin, message);   // Get the message from cin
+        std::string userName = command.erase(0, 1); // Erase the @ from the @<name>
+
+        message = "SEND " + userName + message +"\n";
+        const char *buffer_c_str = message.c_str();
+        stdinBuffer.writeChars(buffer_c_str, strlen(buffer_c_str));
 //
 //        ssize_t message_result = send(this->sock, byteSend, strlen(byteSend), 0);
 //        if((int) message_result == -1){
@@ -75,54 +74,21 @@ int Client::handleCommand() {
     }
 }
 int Client::readFromStdin(){
-    /*
-     * 1. Read command
-     * 2. Format the command into ready to send c_string
-     * 3. Put the formatted c_string into buffer
-     */
-    // Read command
-    std::string command;
-    std::cin >> command;
+    std::string to_buf;
+    std::cin >> to_buf;
+
     if(!std::cin) {
         fprintf(stderr, "Input error! \n");
         return -1;
     }
 
-    if (strcmp(command.c_str(), "!quit") == 0) {
-        std::cout << "Stopping Application";
-        return -1;
-    }
-
-    else if (strcmp(command.c_str(),  "!who") == 0) {
-        stdinBuffer.writeChars("WHO\n", 4);
+    if(!stdinBuffer.writeChars(to_buf.c_str(), strlen(to_buf.c_str()))) {
+        fprintf(stderr, "Writing error, buffer is full! \n");
+        return -2;
     }
     else{
         std::cout << to_buf << " has been added to the stdin buffer";
     }
-
-    else if(command.at(0) == '@') {
-        std::string message = command.erase(0, 1); // Erase the @ from the @<name>
-    }
-
-
-    // Format the command into ready to send c_string
-//    switch(command.at(0)){
-//        case '@':
-//            std::string userName = command.erase(0, 1); // Erase the @ from the @<name>
-//            std::string message = "SEND " + userName + message +"\n";
-
-    }
-
-
-
-
-
-
-//
-//    if(!stdinBuffer.writeChars(to_buf.c_str(), strlen(to_buf.c_str()))) {
-//        fprintf(stderr, "Writing error, buffer is full! \n");
-//        return -2;
-//    }
 
     return 0;
 }
