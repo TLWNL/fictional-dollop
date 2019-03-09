@@ -86,6 +86,9 @@ int Client::readFromStdin(){
         fprintf(stderr, "Writing error, buffer is full! \n");
         return -2;
     }
+    else{
+        std::cout << to_buf << " has been added to the stdin buffer";
+    }
 
     return 0;
 }
@@ -94,6 +97,15 @@ int Client::readFromSocket() {
     char socketBuf[500];
     if(recv(this->sock, socketBuf, 500, 0) == -1)
         fprintf(stderr, "receive error: -1");
+    else{
+        if(!socketBuf.writeChars(socketBuf, strlen(socketBuf))) {
+            fprintf(stderr, "Writing error, buffer is full! \n");
+            return -2;
+        }
+        else{
+            std::cout << socketBuf << " has been added to the buffer";
+        }
+    }
 
     return 0;
 }
