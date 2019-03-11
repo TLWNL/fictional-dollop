@@ -7,28 +7,29 @@
 
 int Client::tick() {
     std::cin.ignore();
-    if(readFromStdin() == -1) {
-        std::cout << "We outtie boiz \n";
-        return -1;
-    }
 
     if(stdinBuffer.hasLine()) {
         std::string to_send = stdinBuffer.readLine() + "\n";
         std::cout << "LINE FOUND: " << to_send;
         if(send(this->sock, to_send.c_str(), strlen(to_send.c_str()), 0) == -1)
             fprintf(stderr, "send Error\n");
-        else
+        else {
             std::cout << "Send complete.\n";
+            return 0;
+        }
     }
-//    if(socketBuffer.hasLine()){
-//        std::cout << "line found!\n";
-//        std::cout << socketBuffer.readLine();
-//    }
 
-//    if(stdinBuffer.hasLine())
-//        readFromStdin();
+    if(socketBuffer.hasLine()){
+        std::cout << "line found!\n";
+        std::cout << socketBuffer.readLine();
+    }
+
 //    std::cout << "ret\n";
-//    readFromSocket();
+    readFromSocket();
+    if(readFromStdin() == -1) {
+        std::cout << "We outtie boiz \n";
+        return -1;
+    }
 
     return 0;
 }
@@ -36,10 +37,8 @@ int Client::tick() {
 int Client::readFromStdin(){
     std::cout << "Please enter your command:\n";
     std::string command;
-//    std::cin >> command;
-
     std::getline(std::cin, command, '\n');
-    std::cout << command << std::endl;
+//    std::cout << command << std::endl;
 
     if (strcmp(command.c_str(), "!quit") == 0) {
         std::cout << "Stopping Application";
@@ -47,18 +46,15 @@ int Client::readFromStdin(){
     }
     else if (strcmp(command.c_str(),  "!who") == 0) {
         stdinBuffer.writeChars("WHO\n", 4);
-//        std::cout << "WHO\n" << " has been added to the stdin buffer" << std::endl;
+        std::cout << "WHO\n" << " has been added to the stdin buffer" << std::endl;
     }
 
     else if(command.at(0) == '@'){
-//        std::string message;
         std::string message = command.erase(0,1);
-//        std::getline(std::cin, message);
-//        std::cout << "Message = " << message;
 
         message = "SEND " + message +"\n";
         stdinBuffer.writeChars(message.c_str(), strlen(message.c_str()));
-        std::cout << message << " has been added to the stdin buffer" << std::endl;
+//        std::cout << message << " has been added to the stdin buffer" << std::endl;
 
     }
 
@@ -73,12 +69,15 @@ int Client::readFromStdin(){
 int Client::readFromSocket() {
     char socketBuf[500];
 //    std::string str = std::string(socketBuf);
+    ssize_t nchars = recv(this->sock, socketBuf, 500, 0);
 
-    if(recv(this->sock, socketBuf, 500, 0) == -1)
+    if((int) nchars == -1)
         fprintf(stderr, "receive error: -1");
+    else if((int) nchars == 0){
+        std::cout << "NO CHARS RECEIVED!\n";
+    }
     else{
         std::string str = std::string(socketBuf);
-
         socketBuffer.writeChars(str.c_str(), strlen(str.c_str()));
         std::cout << str << " has been added to the socket buffer";
 
