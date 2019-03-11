@@ -6,6 +6,7 @@
 #include "Client.h"
 
 int Client::tick() {
+    std::cin.ignore();
     if(readFromStdin() == -1) {
         std::cout << "We outtie boiz \n";
         return -1;
@@ -34,9 +35,9 @@ int Client::tick() {
 
 int Client::readFromStdin(){
     std::cout << "Please enter your command:\n";
-    std::string command = " ";
+    std::string command;
 //    std::cin >> command;
-    std::cin.ignore();
+
     std::getline(std::cin, command, '\n');
     std::cout << command << std::endl;
 
@@ -50,12 +51,12 @@ int Client::readFromStdin(){
     }
 
     else if(command.at(0) == '@'){
-        std::string message;
-        std::string name = command.erase(0,1);
-        std::getline(std::cin, message);
+//        std::string message;
+        std::string message = command.erase(0,1);
+//        std::getline(std::cin, message);
 //        std::cout << "Message = " << message;
 
-        message = "SEND " + name + " " + message +"\n";
+        message = "SEND " + message +"\n";
         stdinBuffer.writeChars(message.c_str(), strlen(message.c_str()));
         std::cout << message << " has been added to the stdin buffer" << std::endl;
 
