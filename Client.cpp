@@ -9,14 +9,17 @@ int Client::tick() {
     std::cout << "Please enter your command:\n";
     if(readFromStdin() == -1)
         return -1;
-    readFromSocket();
-    std::cout << "Check1\n";
+
+//    std::cout << "Check1\n";
 
     if(stdinBuffer.hasLine()) {
-        std::cout << "Check\n";
-        std::string to_send = stdinBuffer.readLine();
+
+        std::string to_send = stdinBuffer.readLine() + "\n";
+        std::cout << "LINE FOUND: " << to_send;
         if(send(this->sock, to_send.c_str(), strlen(to_send.c_str()), 0) == -1)
             fprintf(stderr, "send Error\n");
+        else
+            std::cout << "Send complete.\n";
     }
     if(socketBuffer.hasLine()){
         std::cout << "line found!\n";
@@ -25,7 +28,8 @@ int Client::tick() {
 
 //    if(stdinBuffer.hasLine())
 //        readFromStdin();
-    std::cout << "ret\n";
+//    std::cout << "ret\n";
+    readFromSocket();
     return 0;
 }
 
@@ -91,7 +95,7 @@ int Client::handleCommand() {
 int Client::readFromStdin(){
     std::string command;
     std::cin >> command;
-    std::cout << command;
+    std::cout << command << std::endl;
 
     if (strcmp(command.c_str(), "!quit") == 0) {
         std::cout << "Stopping Application";
@@ -99,13 +103,13 @@ int Client::readFromStdin(){
     }
     else if (strcmp(command.c_str(),  "!who") == 0) {
         stdinBuffer.writeChars("WHO\n", 4);
-        std::cout << "WHO\n" << " has been added to the stdin buffer" << std::endl;
+//        std::cout << "WHO\n" << " has been added to the stdin buffer" << std::endl;
     }
 
     else if(command.at(0) == '@'){
         std::string message;
         std::string name = command.erase(0,1);
-        std::getline (std::cin, message);   // Get the message from cin
+//        std::getline (std::cin, message);   // Get the message from cin
         message = "SEND " + name + message +"\n";
         stdinBuffer.writeChars(message.c_str(), strlen(message.c_str()));
 //        std::cout << message << " has been added to the stdin buffer" << std::endl;
@@ -143,6 +147,7 @@ void Client::createSocketAndLogIn(){
     const char *port = "5378";
     std::string login_name, login_message;
     char buf[500];
+    memset(&buf, 0, sizeof(buf));
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
     hints.ai_protocol = IPPROTO_TCP;
