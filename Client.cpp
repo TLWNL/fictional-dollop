@@ -6,14 +6,12 @@
 #include "Client.h"
 
 int Client::tick() {
-    std::cout << "Please enter your command:\n";
-    if(readFromStdin() == -1)
+    if(readFromStdin() == -1) {
+        std::cout << "We outtie boiz \n";
         return -1;
-
-//    std::cout << "Check1\n";
+    }
 
     if(stdinBuffer.hasLine()) {
-
         std::string to_send = stdinBuffer.readLine() + "\n";
         std::cout << "LINE FOUND: " << to_send;
         if(send(this->sock, to_send.c_str(), strlen(to_send.c_str()), 0) == -1)
@@ -21,80 +19,25 @@ int Client::tick() {
         else
             std::cout << "Send complete.\n";
     }
-    if(socketBuffer.hasLine()){
-        std::cout << "line found!\n";
-        std::cout << socketBuffer.readLine();
-    }
+//    if(socketBuffer.hasLine()){
+//        std::cout << "line found!\n";
+//        std::cout << socketBuffer.readLine();
+//    }
 
 //    if(stdinBuffer.hasLine())
 //        readFromStdin();
 //    std::cout << "ret\n";
-    readFromSocket();
+//    readFromSocket();
+
     return 0;
 }
 
-
-int Client::handleCommand() {
-    std::string command;
-    std::cout << "Please enter your command:\n";
-    std::cin >> command;
-
-    stdinBuffer.writeChars(command.c_str(), strlen(command.c_str()));
-
-    if (strcmp(command.c_str(), "!quit") == 0) {
-        std::cout << "Stopping Application";
-        return -1;
-    }
-    else if (strcmp(command.c_str(),  "!who") == 0){
-        stdinBuffer.writeChars("WHO\n", 4);
-//        char who_buffer[1024];
-//        memset(&who_buffer, 0, sizeof(who_buffer));
-//
-//        ssize_t who_result = send(this->sock, "WHO\n", 4, 0);
-//        if((int) who_result == -1){
-//            fprintf(stderr, "send Error: -1\n");
-//        }
-
-//        ssize_t receive_result = recv(this->sock, who_buffer, 1024, 0);
-//
-//        if((int) receive_result == -1){
-//            fprintf(stderr, "receive error: -1\n");
-//        }
-//
-//        std::cout << who_buffer;
-    }
-
-    else if(command.at(0) == '@'){
-        std::string message;
-        char message_buffer[14];
-//        memset(&message_buffer, 0, sizeof(message_buffer));
-        std::getline (std::cin, message);   // Get the message from cin
-        std::string userName = command.erase(0, 1); // Erase the @ from the @<name>
-
-        message = "SEND " + userName + message +"\n";
-        const char *buffer_c_str = message.c_str();
-        stdinBuffer.writeChars(buffer_c_str, strlen(buffer_c_str));
-//
-//        ssize_t message_result = send(this->sock, byteSend, strlen(byteSend), 0);
-//        if((int) message_result == -1){
-//            fprintf(stderr, "send Error: -1");
-//        }
-//
-//        ssize_t message_receive = recv(this->sock, message_buffer, 8, 0);
-//
-//        if((int) message_receive == -1){
-//            fprintf(stderr, "receive error: -1");
-//        }
-//        std::cout << message_buffer;
-    }
-
-    else{
-        fprintf(stderr, "Command not recognised\n");
-    }
-}
 int Client::readFromStdin(){
-    std::string command;
-    std::cin >> command;
+    std::cout << "Please enter your command:\n";
+    std::string command = " ";
+//    std::cin >> command;
+    std::cin.ignore();
+    std::getline(std::cin, command, '\n');
     std::cout << command << std::endl;
 
     if (strcmp(command.c_str(), "!quit") == 0) {
@@ -109,10 +52,12 @@ int Client::readFromStdin(){
     else if(command.at(0) == '@'){
         std::string message;
         std::string name = command.erase(0,1);
-//        std::getline (std::cin, message);   // Get the message from cin
-        message = "SEND " + name + message +"\n";
+        std::getline(std::cin, message);
+//        std::cout << "Message = " << message;
+
+        message = "SEND " + name + " " + message +"\n";
         stdinBuffer.writeChars(message.c_str(), strlen(message.c_str()));
-//        std::cout << message << " has been added to the stdin buffer" << std::endl;
+        std::cout << message << " has been added to the stdin buffer" << std::endl;
 
     }
 
@@ -134,7 +79,7 @@ int Client::readFromSocket() {
         std::string str = std::string(socketBuf);
 
         socketBuffer.writeChars(str.c_str(), strlen(str.c_str()));
-        std::cout << str << " has been added to the buffer";
+        std::cout << str << " has been added to the socket buffer";
 
     }
 
