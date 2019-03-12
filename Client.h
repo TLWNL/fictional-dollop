@@ -176,7 +176,6 @@ public:
      */
     int tick();
 
-    int handleCommand();
 
 };
 
